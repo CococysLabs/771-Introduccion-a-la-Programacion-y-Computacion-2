@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- doctype: indica que es html5 -->
+<html lang="es">
+<head>
+    <!-- head: informacion que no se ve -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @* el titulo cambia segun cada vista *@
+    <title>@ViewData["Title"] - IPC2</title>
+    @* enlaza el css desde wwwroot usando ~/ *@
+    <link rel="stylesheet" href="~/estilos.css" />
+</head>
+<body>
+    <!-- esta cabecera se repite en todas las paginas -->
+    <header class="cabecera">
+        <h1>Lista de Tareas</h1>
+        <p>Vista con Razor (ASP.NET Core MVC)</p>
+    </header>
+
+    <main>
+        @* aqui razor inserta el contenido de cada vista *@
+        @RenderBody()
+    </main>
+
+    <!-- este pie tambien se repite siempre -->
+    <footer class="pie">
+        <p>IPC2 - Escuela de Ciencias y Sistemas</p>
+    </footer>
+</body>
+</html>
