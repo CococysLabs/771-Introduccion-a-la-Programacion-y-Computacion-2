@@ -1,0 +1,39 @@
+@* declara el tipo de datos que recibe esta vista (el viewmodel) *@
+@model TareasViewModel
+@* pone el titulo de la pagina (lo usa el layout) *@
+@{
+    ViewData["Title"] = "Tareas";
+}
+
+@* muestra cuantas tareas estan pendientes, usando una expresion *@
+<p class="pendientes">Pendientes: @Model.Pendientes</p>
+
+@* formulario para agregar una tarea: hace post a la accion de agregar *@
+<form method="post" asp-action="Agregar" class="agregar">
+    <input name="texto" placeholder="Escribe una tarea" />
+    <button type="submit">Agregar</button>
+</form>
+
+<ul>
+    @* repite un li por cada tarea de la lista *@
+    @foreach (var tarea in Model.Tareas)
+    {
+        @* la clase hecha se agrega solo si la tarea esta hecha *@
+        <li class="@(tarea.Hecha ? "hecha" : "")">
+            @* al enviar este form se alterna la tarea (post con su id) *@
+            <form method="post" asp-action="Alternar" asp-route-id="@tarea.Id" class="en-linea">
+                <button type="submit" class="texto">@tarea.Texto</button>
+            </form>
+            @* al enviar este form se elimina la tarea (post con su id) *@
+            <form method="post" asp-action="Eliminar" asp-route-id="@tarea.Id" class="en-linea">
+                <button type="submit" class="borrar">x</button>
+            </form>
+        </li>
+    }
+</ul>
+
+@* si no hay tareas, muestra un mensaje *@
+@if (Model.Tareas.Count == 0)
+{
+    <p class="ayuda">No hay tareas todavia.</p>
+}
