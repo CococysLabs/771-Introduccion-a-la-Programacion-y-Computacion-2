@@ -88,5 +88,5 @@ Cada ciclo contiene el material del curso organizado según la estructura origin
 
 ## 📧 Contacto
 
-- Email: cococys@ingenieria.usac.edu.gt
+- Email: software.cococcys@gmail.com
 - Organización: [CococysLabs](https://github.com/CococysLabs)
